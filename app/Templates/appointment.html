@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Appointment</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% load staticfiles %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'back.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/back.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+<body id="bg9">
+	<section class="ag  ile-header">
+		<div class="agile-heading">
+			<h1 style="color:black"><span style="color:red">Fix</span> Your<span style="color:red"> Appointment</span> Here..!</h1>
+		</div>
+		<div class="agile-form">
+			<form action="/app/appoint/" method="POST">
+				{% csrf_token %}
+				<div class="agile-email">
+					<input type="text" name="name" placeholder="Patient's Name" required="">
+				</div>
+				<div class="agile-password">
+					<input type="text" name="phonenumber" placeholder="Patient's Phone Number" required="">
+				</div>
+				<div>
+					<input type="email" name="Email" placeholder="Patient's EmailId" required="">
+				</div>
+				<div class="agile-gender">
+
+					<div class="agile-mgender">
+						<input type="radio" name="gender" value="male" required="">
+						<span>male</span>
+					</div>
+					<div class="agile-fgender">
+						<input type="radio" name="gender" value="female" required="">
+						<span>female</span>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<div class="agile-profile">
+
+                    <p>Doctor Name</p>
+					<input type="text" name="dname" value="{{ DoctorData.1 }}" >
+
+				</div>
+				<div class="agile-religion">
+					<p> Specialist in </p>
+					<input type="text" name="digo" value="{{ DoctorData.2 }}">
+				</div>
+				<div class="agile-tongue">
+					<p> Doctor Email-ID</p>
+					<input type="email" name="long" value="{{ DoctorData.3 }}">
+				</div>
+				<div class="form-group">
+					<p>Reason For Visit*</p>
+					<textarea rows="1" cols="50" name="visit" required=""></textarea>
+				</div><p>Appointment time</p>
+				<div class="agile-religion">
+					<p>Date</p>
+					<input type="date" class="form-control" name="date" required="">
+				</div>
+				<div class="agile-tongue">
+					<p>Time</p>
+					<input type="time" class="form-control" name="time" required="">
+				</div><br><br><br>
+				<div class="agile-submit" style="margin-top:20px;">
+					<input type="submit" value="Submit">
+				</div>
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>

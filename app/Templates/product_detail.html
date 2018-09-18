@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        <h2> Available {{categoryName}} Products Are</h2></br>
+        {% for itemData in data %}
+        {% for row in itemData %}
+        <div class="col-sm-4">
+            <h3>{{row.1}}</h3>
+            <h4>$ {{row.2}}</h4>
+            <img src="{{ '/media/' }}{{ row.3 }}" width="300" height="200px" id="itemImage"><br><br>
+            <a class="btn btn-success" href="/app/aboutproduct?productId={{ row.0 }}">Buy Now</a><br><br>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
+

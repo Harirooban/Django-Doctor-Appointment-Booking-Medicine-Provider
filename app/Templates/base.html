@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEDI STORE</title>
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'back.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+</head>
+
+<body id="bg">
+<div class="container">
+    <div class="top_head">
+        <div class="container">
+            <div class="inner_top">
+                <ul class="ul_one">
+                    <li>
+                        <a href="harirooban@gmail.com">
+                            <i class="fa fa-envelope" aria-hidden="true"></i> harirooban@gmail.com</a>
+                    </li>
+                    <li>
+                            <span style="color:white">
+                                <i class="fa fa-phone-square" aria-hidden="true"></i> 822 065 8296</span>
+                    </li>
+                </ul>
+                <ul class="ul_two">
+                    <li>
+                        <a href="/app/cart/" class="btn btn-primary">CART {{ noOfItems }}</a>
+
+                    </li>
+                    <li>
+                        {% if not loggedIn %}
+                        <a href="/app/login/">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                        {% else %}
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" id="drop" data-toggle="dropdown">Hi,{{firstName}}
+                            </button>
+                            <div class="dropdown-menu" area-labelledby="drop">
+                                <a class="dropdown-item" href="/app/YourCart/">
+                                        <span style="color:black">Your Orders
+                                            </span>
+                                </a></br>
+                                <hr>
+                                <a class="dropdown-item" href="/app/logout/" class="btn btn-danger">
+                                        <span style="color:black">Sign Out
+                                            </span>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom_head">
+        <div class="container">
+            <div class="logo">
+                <a href="/app/">Medi
+                    <span>S</span>tore</a>
+            </div>
+            <div class="summa">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/app/">
+                            <h4>Home</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/app/product/">
+                            <h4>Product</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about">
+                            <h4>About Us</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/app/contact/">
+                            <h4>Contact </h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+    <footer id="home_foot">
+        <div class="footer-copyright text-center text-black-50 py-3">
+            Designed By : Hari Prasath
+        </div>
+    </footer>
+</div>
+<script>$('#easyPaginate').easyPaginate({
+	paginateElement: 'img',
+	elementsPerPage: 3,
+	effect: 'climb'
+});
+</script>
+</body>
+
+
+</html>

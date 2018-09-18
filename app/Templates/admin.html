@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <style>
+        th{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row text-center">
+        <h1 class="text-center"> Welcome Admin</h1>
+        <div class="dropdown text-right">
+            {% for tow in tata %}
+            <button class="btn dropdown-toggle" style="color:black" type="button" data-toggle="dropdown">Hi, {{ tow.1 }} &NonBreakingSpace; {{ tow.2 }}
+                {% endfor %}
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="float:right;margin-left:90%;">
+                <li><a href="/app/arecover/">EDIT PROFILE</a></li>
+                <li><a href="/app/alogout/">LOGOUT</a></li>
+            </ul>
+        </div>
+        <select id="size_select" class="btn btn-success">
+            <option value="option1">Products</option>
+            <option value="option2">Categories</option>
+        </select>
+    </div>
+    <div id="option1" class="size_chart">
+        <div>
+            <a data-toggle="modal" data-target="#myModal" class="btn btn-default"><i class="fa fa-cart-plus"
+                                                                                     aria-hidden="true"></i> Add
+                Products</a>
+        </div>
+        <table class="table table-striped table-bordered text-center" style="width:100%">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>{% for cow in data %}
+            <tr>
+                <td>
+                    {{ cow.0 }}
+                </td>
+                <td>
+                    {{ cow.1 }}
+                </td>
+                <td>
+                    {{ cow.2 }}
+                </td>
+                <td>
+                    {{ cow.3 }}
+                </td>
+                <td>
+                    <img src="{{ '/media/' }}{{ cow.5 }}" width=50px height=30px>
+                </td>
+                <td>
+                    {% if row.4 == Null %}
+                    <a class="btn btn-danger btn-sm" href="/app/removeItem?productId={{ cow.0 }}">Delete </a>
+                    &NonBreakingSpace;&NonBreakingSpace;
+                    <a class="btn btn-primary btn-sm" href="/app/update/{{ cow.0 }}">Edit </a>
+                    {% endif %}
+                </td>
+
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h1 style="color:Green" class="modal-title">Add Item</h1>
+                    </div>
+                    <div class="modal-body">
+                        <h2 style="color:blue">Enter Item Details</h2>
+                        <form action="/app/addItem/" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Product Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="price" class="form-control" placeholder="Product Price">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" class="form-control" rows="3"
+                                          placeholder="Product Descriptions"></textarea>
+                            </div>
+                            <div class="form-group">
+                                Upload a image Here :<input type="file" class="form-control" name="image"><br>
+                            </div>
+
+                            <div class="form-group">
+                                Select Category:
+                                <select name="category">
+                                    {% for row in catData %}
+                                    <option value="{{ row.0 }}">{{ row.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" name="Add">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="option2" class="size_chart">
+        <div>
+            <a data-toggle="modal" data-target="#myModal1" class="btn btn-default"><i class="fa fa-cart-plus"
+                                                                                      aria-hidden="true"></i> Add
+                Category</a>
+        </div>
+        <table class="table table-striped table-bordered text-center" style="width:100%">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>{% for row in catData %}
+            <tr>
+                <td>
+                    {{ row.0 }}
+                </td>
+                <td>
+                    {{ row.1 }}
+                </td>
+                <td>
+                    <img src="{{ '/media/' }}{{ row.2 }}" width=50px height=30px>
+                </td>
+                <td class="text-center">
+                    <a class="btn btn-danger btn-sm" href="/app/removeItem?categoryId={{ row.0 }}">Delete </a>
+                </td>
+
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h1 style="color:Green" class="modal-title">Add Category</h1>
+                    </div>
+                    <div class="modal-body">
+                        <h2 style="color:blue">Enter New category</h2>
+                        <form action="/app/caddItem/" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Catgory Name">
+                            </div>
+                            <div class="form-group">
+                                Upload a image Here :<input type="file" class="form-control" name="image"><br>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" name="Add">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+  $(".size_chart").hide();
+  $("#option1").show();
+  $("#size_select").change(function(){
+    $('.size_chart').hide();
+    $('#'+$(this).val()).show();
+  });
+
+});
+
+
+
+</script>
+</body>
+</html>

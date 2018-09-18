@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+        <h1>Hai {{firstName}} Your order has been placed</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Product name</td>
+            <td>Product price</td>
+            <td>Product Image</td>
+            <td>Product status</td>
+            <td>Remove from cart</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in products %}
+        <tr>
+            <td>{{ row.1}}</td>
+            <td>{{ row.2 }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

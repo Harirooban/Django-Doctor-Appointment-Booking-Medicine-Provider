@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+</head>
+<body>
+        {% for row in PatientData %}
+        <h1>Respected{{ row.0}},</h1>
+        <h2>This is an remainder</h2>
+        <h3>This is to notify that due to Doctor Inconvenient Your appointment has been canceled . </h3>
+        <h3>Sorry for any hassle caused to you.</h3>
+        <h3>Thank You for your endurance and time.</h3>
+        {% endfor %}
+</body>
+</html>

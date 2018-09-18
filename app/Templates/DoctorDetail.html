@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Details</title>
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'back.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Doctor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Available Doctor's</h1>
+    <div class="row" >
+        {% for row in data %}
+        <div class="col-sm-3  ">
+            <div class="pricingTable tuple">
+                <h3 class="title">{{ row.1 }}</h3>
+                <div class="price-value">
+                    <img src="{% static 'images/3.png' %}" class="image img-circle" >
+                </div><br>
+                <ul class="pricing-content">
+                    <li>{{ row.2 }}</li>
+                </ul>
+                <a title="Chat Now !" style="color:black"><i class="fa fa-lg fa-commenting" aria-hidden="true"></i></a> &NonBreakingSpace;
+                <a href="/app/book/?DoctorId={{ row.0 }}" class="pricingTable-signup">Book Now</a>
+            </div><br>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

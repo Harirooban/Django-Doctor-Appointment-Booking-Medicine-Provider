@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+</head>
+<body>
+        {% for row in problem %}
+        <h1>Hai {{ row.5}},</h1>
+          <h2>This is an remainder</h2>
+        <h3> An Patient <span style="color:green"> {{ row.1}}</span> request an appointment on  the Date ( <span style="color:green">{{ row.10 }}</span> ) &  Time  (<span style="color:green">{{ row.7 }}</span> )</h3>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6"><h2 class="text-center">PATIENT DETAILS</h2>
+                    <table class="table table-bordered">
+          <tr>  <th style="float:left;">Name</th><td>
+                    {{ row.1}}
+                </td></tr>
+            <tr><th style="float:left;">Ph. No.</th> <td>
+                    {{ row.2}}
+                </td></tr>
+            <tr><th style="float:left;">E-mail ID</th><td>
+                    {{ row.6}}
+                </td></tr>
+        </table></div>
+
+            </div> <a href="http://127.0.0.1:8000/app/DoctorPage/">Click Here to CONFIRM</a>
+        </div>
+        {% endfor %}
+</body>
+</html>

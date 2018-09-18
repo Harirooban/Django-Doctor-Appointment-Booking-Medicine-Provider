@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEDI STORE</title>
+    <script src="{{ url_for('static', filename = 'js/jquery.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'back.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
+    <link href="{{ url_for('static', filename = 'font-awesome-4.7.0/css/font-awesome.min.css') }} " rel="stylesheet">
+</head>
+
+<body id="bg6">
+    <div class="container">
+        <div class="top_head">
+            <div class="container">
+                <div class="inner_top">
+                    <ul class="ul_one">
+                        <li>
+                            <a href="harirooban@gmail.com">
+                                <i class="fa fa-envelope" aria-hidden="true"></i> harirooban@gmail.com</a>
+                        </li>
+                        <li>
+                            <span style="color:white">
+                                <i class="fa fa-phone-square" aria-hidden="true"></i> 822 065 8296</span>
+                        </li>
+                    </ul>
+                    <ul class="ul_two">
+                        <li>
+                            <a href="/cart" class="btn btn-primary">CART {{ noOfItems }}</a>
+
+                        </li>
+                        <li>
+                            {% if not loggedIn %}
+                            <a href="/loginForm">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                            {% else %}
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" id="drop" data-toggle="dropdown">Hi,{{ firstName }}</button>
+                                <div class="dropdown-menu" area-labelledby="drop">
+                                    <a class="dropdown-item" href="/account/orders">
+                                        <span style="color:black">Your Orders
+                                            <span>
+                                    </a></br>
+                                    <a class="dropdown-item" href="/account/profile">
+                                        <span style="color:black">Your profile
+                                            <span>
+                                    </a>
+                                    <hr>
+                                    <a class="dropdown-item" href="/logout" class="btn btn-danger">
+                                        <span style="color:black">Sign Out
+                                            <span>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom_head">
+            <div class="container">
+                <div class="logo">
+                    <a href="/">Medi
+                        <span>S</span>tore</a>
+                </div>
+                <div class="summa">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/">
+                                <h4>Home</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/prod">
+                                <h4>Product</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <h4>About Us</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/contact">
+                                <h4>Contact </h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="images/steve.jpg" width="100%" height="180" alt="ruban" class="circle">
+            </div>
+            <div class="col-sm-4">
+                <img src="images/ruban.jpg" width="100%" height="180" alt="ruban" class="circle">
+            </div>
+            <div class="col-sm-4">
+                <img src="images/hari.jpg" width="100%" height="180" alt="ruban" class="circle">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

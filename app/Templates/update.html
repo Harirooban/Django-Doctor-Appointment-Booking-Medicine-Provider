@@ -1,0 +1,39 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta http-equiv="X-UA-Compatible" content="ie=edge">
+			<title>add</title>
+			{% load staticfiles %}
+			<script src="{% static 'js/jquery.js' %}"></script>
+			<link rel="stylesheet" type="text/css" href="{% static 'back.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+			<script src="{% static 'js/bootstrap.min.js' %}"></script>
+			<link href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+		<style>
+
+		</style>
+	</head>
+	<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" id="form">
+			<h1 style="color:blue">Enter Details</h1>
+				<form method="POST" enctype="multipart/form-data" >
+				{% csrf_token %}
+                {{ form.as_p }}
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary" name="Add">Add</button>
+				</div>
+			</form>
+			</div>
+			<div class="col-sm-6"></div>
+		</div>
+
+	</div>
+
+	</body>
+	</html>
