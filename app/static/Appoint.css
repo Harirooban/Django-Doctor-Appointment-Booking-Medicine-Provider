@@ -1,0 +1,111 @@
+pricingdiv{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 16px;
+  justify-content: center;
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+.pricingdiv ul.theplan{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  color: black;/* width of each table */
+  margin-right: 20px; /* spacing between tables */
+  margin-bottom: 1em;
+  border: 1px solid gray;
+  transition: all .5s;
+}
+
+.pricingdiv ul.theplan:hover{ /* when mouse hover over pricing table */
+  transform: scale(1.05);
+  transition: all .5s;
+  z-index: 100;
+  box-shadow: 0 0 10px gray;
+}
+
+.pricingdiv ul.theplan .center{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pricingdiv ul.theplan img{
+  max-width: 80%;
+  height: auto;
+}
+
+.pricingdiv ul.theplan li{
+  padding: 10px 10px;
+  position: relative;
+  border-bottom: 1px solid #eee;
+}
+
+.pricingdiv ul.theplan li.title{
+  font-weight: bold;
+  text-align: center;
+  background: rgb(40, 193, 203);
+  color: black;
+  box-shadow: 0 -10px 5px rgba(0,0,0,.1) inset;
+}
+
+.pricingdiv ul.theplan:nth-of-type(2) li.title{
+  background: rgb(249, 111, 118);
+  color: white;
+}
+    
+.pricingdiv ul.theplan:nth-of-type(3) li.title{
+  background: rgb(210, 117, 251);
+  color: white;
+}
+
+.pricingdiv ul.theplan li b{
+    float:left;
+}
+span{
+    font-sixe:10px;
+}
+.pricingdiv ul.theplan li.title b{
+  font-size: 250%;
+}
+
+.pricingdiv ul.theplan:last-of-type{ /* remove right margin in very last table */
+  margin-right: 0;
+}
+
+/*very last LI within each pricing UL */
+.pricingdiv ul.theplan li:last-of-type{
+  text-align: center;
+  margin-top: auto; /*align last LI (price botton li) to the very bottom of UL */
+}  
+
+.pricingdiv a.pricebutton{
+  background: red;
+  text-decoration: none;
+  padding: 10px;
+  display: inline-block;
+  margin: 10px auto;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .pricingdiv ul.theplan{
+    border-radius: 0;
+    width: 100%;
+    margin-right: 0;
+  }
+  
+  .pricingdiv ul.theplan:hover{
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .pricingdiv a.pricebutton{
+    display: block;
+  }
+}
